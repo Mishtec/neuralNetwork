@@ -1,12 +1,20 @@
 Question 1:
 Using Java, please develop a neural network that mimics the behavior of an AND boolean gate. Weights, biases, and the activation function must all be implemented by you. Do not use any libraries for the functionality of the neural net; you implement it from scratch. You need to answer the following questions: 
+
 a) How many hidden layers have you used?
+
 b) What are the weights and biases of each node?
+
 You should provide a simple driver to test it.
+
+
+
 
 Question 2:
 Includes back propagation 
 Using Python and any of the libraries it provides, please implement a feed-forward neural network for the following training set:
+
+
 | A | B | C | D | E |                   output                      |
 | 1 | 1 | 1 | 0 | 0 |                          1                          |
 | 1 | 1 | 1 | 0 | 1 |                          1                          |
@@ -43,6 +51,8 @@ Use the following testing set to check how good the neural net is in classificat
 | 1 | 1 | 0 | 1 | 1 |                          1                          |
 | 1 | 1 | 1 | 1 | 0 |                          1                          |
 | 1 | 1 | 1 | 1 | 1 |                          1                         |
+
+
 
 You need to think of/ examine / contemplate about / consider / meditate about 😊 / answer the following questions:
 a) How many hidden layers have you used? And why?
