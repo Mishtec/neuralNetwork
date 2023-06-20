@@ -2,22 +2,17 @@
 
 # neuralNetwork
 class neuralNetwork:
-    def __init__(self, sizes):
-        np.random.seed(6795)
-        self.biases = [np.random.randn(y, 1) for y in sizes[1:]] # 1 x 2, 1 x 1
-        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])] 
-        # random, sizes[:-1] last column, sizes[1:] for hidden layer and ouptut layer
-        # 2 x 2, 1 x 2
-      
-        #print(self.weights)
-        #print(self.biases)
-
+    def __init__(self, n_inputs, n_neurons):
+        np.random.seed(4)
+        self.biases = np.zeros((1, n_neurons))
+        self.weights = np.random.randn(n_inputs, n_neurons)
+        
+     
     def get_weights(self):
         return self.weights
 
     def get_biases(self):
         return self.biases
-
 
     # Sigmoid function = Activation function 
     def sigmoid(self, x):
@@ -33,38 +28,34 @@ class neuralNetwork:
     # Where gj is a nonlinear activation function (sigmoid function) associated with unit j and inj is the weighted sum of the inputs to unit j.
 
     def feedforward(self, inputs):
-        for b, w in zip(self.biases, self.weights):
-            inputs = self.sigmoid(np.dot(w, inputs ) + b)
-
+        inputs = (self.sigmoid(np.dot(inputs, self.weights) + self.biases))
         #  sigmoid func for the σ = weighted sums
         return inputs
 
     # cost function
     # [output - expected output]^2 
-    def cost_function(self, output, expected_out):
-        cost = (output - expected_out)**2
+    def cost_function(self, actual_output, expected_out):
+        cost = (expected_out - actual_output)
         return cost
 
     # avg cost of all training data = performance measure 
     def avg_cost(self, output, expected_out):
-        return np.mean(self.cost_function(self, output, expected_out))
+        return np.mean(self.cost_function(output, expected_out)**2)
 
 
     # Compute gradient of Cost function
     # Small step in -gradient of Cost function direction
     # Repeat until we find the minimum
-
-
-
     # back propogation = for computing gradient efficiently 
-
-
+    def back_propogation(self, inputs, weighted_sums, cost, learning_rate):
+        d_weights = np.dot(inputs.T, cost * self.sigmoid_derivative(weighted_sums))
+        d_bias = np.sum(cost * self.sigmoid_derivative(weighted_sums), axis =0)
+         # Update the weights and bias
+        self.weights += learning_rate * d_weights
+        self.biases += learning_rate * d_bias
+        return d_weights, d_bias
     
 
-
-
-    # Training dataset for bias and weights 
-    # def train(self, ):
 
 
 
@@ -84,9 +75,7 @@ class neuralNetwork:
 
 
 
-# weights, biases, and the activation function must all be implemented by you
-# a) How many hidden layers have you used?
-# b) What are the weights and biases of each node?    
+ 
 
 
 
