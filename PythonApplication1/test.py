@@ -10,7 +10,7 @@ dataset = np.array([
    ])
 
 X = dataset[:, :-1] # all except last
-#y = dataset[:, -1] # last column
+#y = dataset[:, -1] # last column, could not transpose
 y = np.array([[0,0,0,1]])
 
 # Usage
