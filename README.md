@@ -8,8 +8,6 @@ b) What are the weights and biases of each node?
 You should provide a simple driver to test it.
 
 
-
-
 Question 2:
 Includes back propagation 
 Using Python and any of the libraries it provides, please implement a feed-forward neural network for the following training set:
