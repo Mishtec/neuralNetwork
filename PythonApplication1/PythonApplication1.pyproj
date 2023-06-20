@@ -21,11 +21,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controller.py" />
-    <Compile Include="Model.py" />
     <Compile Include="PythonApplication1.py" />
     <Compile Include="neuralNetwork.py" />
-    <Compile Include="View.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
