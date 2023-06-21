@@ -13,15 +13,12 @@ X = dataset[:, :-1] # all except last
 #y = dataset[:, -1] # last column, could not transpose
 y = np.array([[0,0,0,1]])
 
-# Usage
+# 2 neurons in input layer
+# 2 neurons in hidden layer -> 2 layers
+# 1 neurons in output layer
 layer1 = neuralNetwork.neuralNetwork(X.shape[1], 2)
 layer2 = neuralNetwork.neuralNetwork(2, 2)
 layer3 = neuralNetwork.neuralNetwork(2, 1)
-
-
-
-# For training will need to loop over all layers
-#print ("input: ", X[0])
 
 
 print("weights 1:\n", layer1.get_weights()) # these are only neuron weights 
@@ -53,7 +50,10 @@ print("avg_cost 3:\n", avg_cost3)
 
 
 learning_rate = 0.1
+
+# total number of iterations of all the training data in one cycle for training
 epochs = 10000
+
 for epoch in range(epochs):
     d_weights3, d_bias3 = layer3.back_propogation(output2, output3, layer3.cost_function(output3, y.T), learning_rate)
     d_weights2, d_bias2 = layer2.back_propogation(output1, output2, layer2.cost_function(output2, y.T), learning_rate)
@@ -70,7 +70,7 @@ for epoch in range(epochs):
 
 print("weights 3:\n", layer3.get_weights()) 
 print("biases 3:\n",layer3.get_biases())
-print("output3:\n", output3)
+print("output3:\n", output3.round())
 
 cost3 = layer3.cost_function(output3, y.T)
 print("cost 3:\n", cost3)
@@ -78,29 +78,7 @@ print("cost 3:\n", cost3)
 avg_cost3 = layer3.avg_cost(output3, y.T)
 print("avg_cost 3:\n", avg_cost3)
 
-# 2 neurons in input layer
-# 2 neurons in hidden layer -> 2 layers
-# 1 neurons in output layer
 
-#print(dataset)
-#print(X)
-#print (y.T)
-
-
-
-
-
-
-# total number of iterations of all the training data in one cycle for training
-
-
-# Test 
-#expected_output = neuralNetwork.feedforward(X.T)
-# Print Results
-#print(expected_output.T)
-
-#for i, j in zip(X, expected_output.T):
- #  print(f"Input: {i}  Expected Output: {j}")
-
+ # create a more user friendly appoach 
 
 
