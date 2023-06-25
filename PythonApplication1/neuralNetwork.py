@@ -15,6 +15,7 @@ class neuralNetwork:
         return self.biases
 
     # Sigmoid function = Activation function 
+    # input x = weighted sum
     def sigmoid(self, x):
         return  1 / (1 + np.exp(-x))
 
@@ -29,7 +30,7 @@ class neuralNetwork:
 
     def feedforward(self, inputs):
         inputs = (self.sigmoid(np.dot(inputs, self.weights) + self.biases))
-        #  sigmoid func for the σ = weighted sums
+        #  sigmoid func for the σ = weighted sums = inputs
         return inputs
 
     # cost function
